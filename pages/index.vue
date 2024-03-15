@@ -1,55 +1,72 @@
-<!--
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <template>
-  <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
-    </div>
-
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST">
-        <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-          <div class="mt-2">
-            <input id="email" name="email" type="email" autocomplete="email" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-          </div>
-        </div>
-
-        <div>
-          <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-            <div class="text-sm">
-              <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+    <div class="h-screen w-full flex justify-center">
+      <div class="lg:pt-7 pt-3 lg:px-12 px-6 lg:w-2/3 w-full lg:min-w-[800px]">
+        <main class="w-full">
+          <div class="w-full md:max-w-[550px] max-w-[360px] mx-auto">
+            <div class="mt-10">
+              <h1 class="lg:text-5xl text-3xl text-center font-extrabold">
+                Log in
+              </h1>
+              <form class="mt-12" @submit.prevent="login()">
+                <div>
+                  <TextInput placeholder="Email: link@gmail.com" v-model:input="email"
+                             inputType="email" :error="errors && errors.email ? errors.email[0] : ''" />
+                </div>
+                <div class="mt-4">
+                  <TextInput placeholder="Password" v-model:input="password" inputType="password"
+                             :error="errors && errors.password ? errors.password[0] : ''" />
+                </div>
+                <div class="mt-10">
+                  <button type="submit" class="rounded-full w-full p-3 font-bold"
+                          :disabled="(!email || !password)"
+                          :class="(email && password) ?
+                                        'bg-[#8228D9] hover:bg-[#6c21b3] text-white' :
+                                        'bg-[#EFF0EB] text-[#A7AAA2]'">
+                    Log in
+                  </button>
+                </div>
+              </form>
+              <div class="text-[14px] text-center pt-12">
+                Don't have an account?
+                <NuxtLink to="/register" class="text-[#8228D9] underline">
+                  Sign up
+                </NuxtLink>
+              </div>
             </div>
           </div>
-          <div class="mt-2">
-            <input id="password" name="password" type="password" autocomplete="current-password" required="" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-          </div>
-        </div>
-
-        <div>
-          <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
-        </div>
-      </form>
-
-      <p class="mt-10 text-center text-sm text-gray-500">
-        Not a member?
-        {{ ' ' }}
-        <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
-      </p>
+        </main>
+      </div>
     </div>
-  </div>
 </template>
+
+<script setup>
+//import axios from 'axios';
+//import { useUserStore } from '~~/stores/user';
+import TextInput from "../components/TextInput.vue";
+
+// const userStore = useUserStore()
+// const router = useRouter()
+//
+// definePageMeta({
+//   middleware: 'is-logged-in'
+// })
+//
+let email = ref(null)
+let password = ref(null)
+let errors = ref(null)
+//
+ const login = async () => {
+  console.log('efhgj')
+//   errors.value = null
+//   try {
+//     await userStore.login(email.value, password.value);
+//     const token = window.localStorage.getItem('token');
+//     if (token) {
+//       axios.defaults.headers.common['Authorization'] = 'Bearer ' + userStore.api_token;
+//     }
+//     router.push('/')
+//   } catch (error) {
+//     errors.value = error.response.data.errors
+//   }
+ }
+</script>
