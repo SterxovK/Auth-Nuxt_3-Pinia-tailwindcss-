@@ -1,0 +1,1 @@
+export { default } from "file:///home/konstantin/petProject/Auth-Nuxt_3-Pinia-tailwindcss-/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
