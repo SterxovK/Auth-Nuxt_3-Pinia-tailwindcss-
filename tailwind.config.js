@@ -9,6 +9,9 @@ module.exports = {
 
   theme: {
     extend: {
+      fontFamily: {
+        'montserrat': ['Montserrat'],
+      },
       container: {
         center: true,
         screens: {
@@ -19,6 +22,7 @@ module.exports = {
       },
     },
   },
+
   corePlugins: {
     textOpacity: false,
     backgroundOpacity: false,
@@ -28,8 +32,5 @@ module.exports = {
     ringOpacity: false,
   },
 
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [],
 };
-
